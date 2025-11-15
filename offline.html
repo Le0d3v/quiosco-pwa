@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modo Offline - Quiosco</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #fff3cd;
+        text-align: center;
+      }
+
+      .offline-box {
+        background: white;
+        padding: 2rem 3rem;
+        border-radius: 16px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        font-size: 2rem;
+        color: #e65100;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+      }
+
+      .btn {
+        background: #ffb300;
+        padding: 0.7rem 1.3rem;
+        border-radius: 10px;
+        color: #fff;
+        font-weight: bold;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="offline-box">
+      <h1>Sin conexión</h1>
+      <p>
+        No tienes conexión a internet. Algunas funciones no estarán disponibles.
+      </p>
+      <a href="/" class="btn">Reintentar</a>
+    </div>
+  </body>
+</html>

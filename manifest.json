@@ -1,0 +1,23 @@
+{
+  "name": "Quiosco PWA",
+  "short_name": "Quiosco",
+  "description": "Aplicación PWA para quiosco de comida, funciona offline y permite instalación.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fff8e1",
+  "theme_color": "#f9a825",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/quiosco-icono192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/quiosco-icono512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#F9A825" />
+
+    <title>Quiosco - PWA</title>
+
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Icons -->
+    <link rel="icon" href="/icons/icon-192.png" />
+
+    <!-- Splash for iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/styles.css" />
+
+    <!-- PouchDB opcional -->
+    <script src="https://unpkg.com/pouchdb@7.3.1/dist/pouchdb.min.js"></script>
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <!-- App Shell Header -->
+      <header class="app-header">
+        <div class="logo">
+          <img src="/icons/icon-192.png" alt="logo" />
+          <h1>Quiosco</h1>
+        </div>
+        <button id="installBtn" class="btn btn-primary hidden">Instalar</button>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Hero / Splash -->
+        <section class="hero">
+          <div class="hero-left">
+            <h2>Sabores al instante</h2>
+            <p class="lead">
+              Elige, paga y recoge tu pedido. App offline-friendly para
+              quioscos.
+            </p>
+            <div class="search-wrap">
+              <input id="search" placeholder="Buscar platillo o bebida..." />
+            </div>
+          </div>
+          <div class="hero-right">
+            <img src="/icons/icon-512.png" alt="comida" />
+          </div>
+        </section>
+
+        <!-- Menú dinámico -->
+        <section class="menu-grid" id="menuGrid"></section>
+
+        <!-- Carrito -->
+        <aside class="cart" id="cart">
+          <h3>Tu pedido</h3>
+          <div id="cartItems"></div>
+          <div class="cart-footer">
+            <div class="total">Total: <span id="totalPrice">$0.00</span></div>
+            <button id="checkoutBtn" class="btn btn-success">Pagar</button>
+          </div>
+        </aside>
+      </main>
+
+      <footer class="app-footer">
+        <small>© Quiosco 2025 • Funciona offline</small>
+      </footer>
+    </div>
+
+    <noscript>
+      <p>Esta aplicación requiere JavaScript para funcionar.</p>
+    </noscript>
+
+    <!-- Scripts -->
+    <script src="/db.js"></script>
+    <script src="/app.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then(() => console.log("SW registrado"))
+          .catch((err) => console.error("SW error", err));
+      }
+    </script>
+  </body>
+</html>
