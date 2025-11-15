@@ -1,11 +1,7 @@
-// ================================
-//  SERVICE WORKER - PWA KIOSCO
-// ================================
-
 const CACHE_NAME = "kiosk-pwa-v1";
 const OFFLINE_URL = "/offline.html";
 
-// Archivos que se cachearán
+// Archivos para el caché
 const ASSETS = [
   "/",
   "/index.html",
@@ -18,12 +14,9 @@ const ASSETS = [
   "/icons/icon-512.png",
 ];
 
-// ========================================
-//  INSTALL
-// ========================================
+//  Evento Install
 self.addEventListener("install", (event) => {
   console.log("SW: Instalando...");
-
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
   );
@@ -31,9 +24,7 @@ self.addEventListener("install", (event) => {
   self.skipWaiting();
 });
 
-// ========================================
-//  ACTIVATE
-// ========================================
+// Evento Activate
 self.addEventListener("activate", (event) => {
   console.log("SW: Activado");
 
@@ -48,9 +39,7 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
-// ========================================
-//  FETCH — Modo Offline
-// ========================================
+// Evento Fetch
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     fetch(event.request)

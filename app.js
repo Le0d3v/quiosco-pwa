@@ -1,15 +1,8 @@
-// =====================
-//  APP JS (PWA SHELL)
-// =====================
-
-// Variables globales
 let menu = [];
 let cart = [];
 
-// IndexedDB / PouchDB DB
 let db = new PouchDB("kioskDB");
 
-// UI Elements
 const menuGrid = document.getElementById("menuGrid");
 const cartItems = document.getElementById("cartItems");
 const totalPriceEl = document.getElementById("totalPrice");
@@ -47,9 +40,7 @@ const defaultMenu = [
   },
 ];
 
-// =====================================================
 //  Cargar datos desde PouchDB o usar default
-// =====================================================
 async function loadMenu() {
   try {
     const result = await db.allDocs({ include_docs: true });
@@ -72,9 +63,7 @@ async function loadMenu() {
   }
 }
 
-// =====================================================
 //  Renderizar Menú
-// =====================================================
 function renderMenu(list) {
   menuGrid.innerHTML = "";
   list.forEach((item) => {
@@ -93,9 +82,7 @@ function renderMenu(list) {
   });
 }
 
-// =====================================================
 //  Carrito
-// =====================================================
 function addToCart(id) {
   const item = menu.find((m) => m.id === id);
   cart.push(item);
@@ -120,9 +107,6 @@ function renderCart() {
   totalPriceEl.textContent = `$${total}.00`;
 }
 
-// =====================================================
-//  Buscador
-// =====================================================
 searchInput.addEventListener("input", () => {
   const q = searchInput.value.toLowerCase();
   const filtered = menu.filter(
@@ -131,9 +115,7 @@ searchInput.addEventListener("input", () => {
   renderMenu(filtered);
 });
 
-// =====================================================
 //  Instalación PWA
-// =====================================================
 let deferredPrompt;
 const installBtn = document.getElementById("installBtn");
 
@@ -152,7 +134,5 @@ installBtn.addEventListener("click", async () => {
   installBtn.classList.add("hidden");
 });
 
-// =====================================================
 //  Inicializar App
-// =====================================================
 loadMenu();

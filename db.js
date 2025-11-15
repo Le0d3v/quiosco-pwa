@@ -1,12 +1,6 @@
-// ==========================
-//  db.js — IndexedDB / PouchDB
-// ==========================
-// Este archivo maneja la base de datos local para la PWA.
-// Se utiliza PouchDB porque es más simple y compatible offline.
-
 console.log("DB inicializada con PouchDB");
 
-// Creamos la base de datos
+
 const localDB = new PouchDB("kioskDB");
 
 // Función para agregar o actualizar un documento
@@ -26,7 +20,7 @@ async function dbSave(doc) {
 }
 
 async function dbGetAll() {
-  try {
+  try { 
     const result = await localDB.allDocs({ include_docs: true });
     return result.rows.map((r) => r.doc);
   } catch (err) {
